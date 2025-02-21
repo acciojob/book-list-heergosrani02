@@ -8,32 +8,35 @@
 </head>
 
 <body>
-	<!-- the entire body must be written by student -->
-	<h1 class="text-center fw-light">My<span class="text-primary">Book</span>List</h1>
-	<div class="form-group">
-  <div class="mb-3">
-    <label for="title" class="form-label">Title</label>
-    <input type="text" class="form-control" id="title">
-  <div class="mb-3">
-    <label for="author" class="form-label">Author</label>
-    <input type="text" class="form-control" id="author">
-  </div>
-	<div class="mb-3">
-		<label for="isbn" class="form-label">ISBN#</label>
-	    <input type="text" class="form-control" id="isbn">
-  </div>
-  
-  <button type="submit" id="submit" class="btn btn-primary" onclick="addList()">Add Book</button>
-</div>
+	<div class="container">
+        <h1>My<span>Book</span>List</h1>
 
-	<table class="table table-striped" id = "book-list">
-		<tr>
-			<th>Tilte</th>
-			<th>Author</th>
-			<th>ISBN#</th>
-			<th></th>
-		</tr>
-	</table>
+        <!-- Form -->
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" class="form-control mb-2" placeholder="Enter Book Title">
+            <label for="author">Author</label>
+            <input type="text" id="author" class="form-control mb-2" placeholder="Enter Author Name">
+            <label for="isbn">ISBN#</label>
+            <input type="text" id="isbn" class="form-control mb-2" placeholder="Enter ISBN Number">
+            <button id="submit" class="btn btn-primary w-100">Add Book</button>
+        </div>
+
+        <!-- Table -->
+        <table class="table table-striped mt-4">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>ISBN#</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="book-list">
+                <!-- Dynamically added rows will appear here -->
+            </tbody>
+        </table>
+    </div>
     <script type="text/javascript" src="./script.js">
 </script>
 

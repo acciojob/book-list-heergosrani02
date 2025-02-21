@@ -1,29 +1,37 @@
-function addList() {
-	var table = document.getElementById("book-list");
-	var title = document.getElementById("title");
-	var author = document.getElementById("author");
-	var isbn = document.getElementById("isbn");
+document.getElementById("submit").addEventListener("click", function() {
+        // Get input values
+        let title = document.getElementById("title").value;
+        let author = document.getElementById("author").value;
+        let isbn = document.getElementById("isbn").value;
 
-	var deleteButton = document.createElement("button");
-	deleteButton.innerHTML = "X";
-	deleteButton.className = "delete";
-	deleteButton.style.backgroundColor = "red";
-	deleteButton.style.border = "none";
-	deleteButton.style.color = "white";
-	
-	
-	var row = table.insertRow(-1);
-	row.insertCell(0).innerHTML = title.value;
-	row.insertCell(1).innerHTML = author.value;
-	row.insertCell(2).innerHTML = isbn.value;
-	row.insertCell(3).appendChild(deleteButton);
+        // Validate input fields
+        if (title === "" || author === "" || isbn === "") {
+            alert("Please fill all fields");
+            return;
+        }
 
-	deleteButton.addEventListener('click', function(e) {
-    var row = e.target.parentNode.parentNode;
-    row.parentNode.removeChild(row);
-});
+        // Create a new row in the table
+        let table = document.getElementById("book-list");
+        let row = document.createElement("tr");
 
-	title.value = " ";
-	author.value = " ";
-	isbn.value = " ";
-}
+        row.innerHTML = `
+            <td>${title}</td>
+            <td>${author}</td>
+            <td>${isbn}</td>
+            <td><button class="delete btn btn-danger btn-sm">X</button></td>
+        `;
+
+        table.appendChild(row);
+
+        // Clear input fields after adding a book
+        document.getElementById("title").value = "";
+        document.getElementById("author").value = "";
+        document.getElementById("isbn").value = "";
+    });
+
+    // Event delegation for delete buttons
+    document.getElementById("book-list").addEventListener("click", function(e) {
+        if (e.target.classList.contains("delete")) {
+            e.target.parentElement.parentElement.remove();
+        }
+    });
